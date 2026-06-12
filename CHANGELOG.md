@@ -2,6 +2,8 @@
 
 ### Added
 
+- **feat(cli): add `export-showcase-data` command.** Added `cupertino export-showcase-data` to export local SQLite database catalog records (Apple Docs, HIG, Apple Archive, Swift Evolution, Swift.org, Swift Book, Samples, and Packages) into a single, unified JSON document to support frontend showcase previews.
+
 - **docs(#1270): record mobile catalog installation.** The README roadmap now names the next gate as mobile catalog install through `CatalogStore`, and `docs/design/mobile-catalog-delivery.md` defines the accepted mobile storage contract: install catalog data under `Application Support/Catalogs`, use App Group namespacing only for shared targets, exclude it from backup, never use `Documents`, and keep DB details inside Cupertino.
 
 - **docs(#1269): document the release-corpus smoke script surface.** The repo script now has folder-structured docs under `docs/scripts/eval/release-corpus-smoke/`, including `<corpus-dir>` and `--help`, matching the command documentation convention for arguments and options.

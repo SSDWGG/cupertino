@@ -29,7 +29,7 @@ struct CommandRegistrationTests {
         // wrappers` (#948 phase 2) + `search-concurrency` /
         // `search-conformances` / `search-generics` (#948 phases 3-5)
         // complete the 5-AST-tool CLI surface mirroring the MCP tools.
-        #expect(config.subcommands.count == 22)
+        #expect(config.subcommands.count == 23)
         #expect(config.subcommands.contains { $0 == CLIImpl.Command.Setup.self })
         #expect(config.subcommands.contains { $0 == CLIImpl.Command.Fetch.self })
         #expect(config.subcommands.contains { $0 == CLIImpl.Command.Save.self })
@@ -52,6 +52,7 @@ struct CommandRegistrationTests {
         #expect(config.subcommands.contains { $0 == CLIImpl.Command.SearchConcurrency.self })
         #expect(config.subcommands.contains { $0 == CLIImpl.Command.SearchConformances.self })
         #expect(config.subcommands.contains { $0 == CLIImpl.Command.SearchGenerics.self })
+        #expect(config.subcommands.contains { $0 == CLIImpl.Command.ExportShowcaseData.self })
     }
 
     @Test("Default subcommand is CLIImpl.Command.Serve")

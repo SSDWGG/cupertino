@@ -71,6 +71,7 @@ struct Cupertino: AsyncParsableCommand {
             CLIImpl.Command.SearchConcurrency.self,
             CLIImpl.Command.SearchConformances.self,
             CLIImpl.Command.SearchGenerics.self,
+            CLIImpl.Command.ExportShowcaseData.self,
         ],
         defaultSubcommand: CLIImpl.Command.Serve.self
     )

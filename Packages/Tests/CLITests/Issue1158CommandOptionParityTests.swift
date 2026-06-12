@@ -53,6 +53,7 @@ struct Issue1158CommandOptionParityTests {
         CLIImpl.Command.SearchConcurrency.self,
         CLIImpl.Command.SearchConformances.self,
         CLIImpl.Command.SearchGenerics.self,
+        CLIImpl.Command.ExportShowcaseData.self,
     ]
 
     @Test("root command registers every subcommand exactly once")
