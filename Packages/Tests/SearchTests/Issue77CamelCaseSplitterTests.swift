@@ -43,13 +43,13 @@ struct Issue77CamelCaseSplitterTests {
         ]
     )
     func acronymFixtures(input: String, expected: [String]) {
-        let result = Search.Index.splitCamelCaseIdentifier(input)
+        let result = Search.Indexer.splitCamelCaseIdentifier(input)
         #expect(result == expected, "\(input) → \(result), expected \(expected)")
     }
 
     @Test("LazyVGrid drops the single-letter V via min-length-3 filter")
     func lazyVGridDropsSingleLetter() {
-        let result = Search.Index.splitCamelCaseIdentifier("LazyVGrid")
+        let result = Search.Indexer.splitCamelCaseIdentifier("LazyVGrid")
         #expect(
             result == ["Lazy", "VGrid", "Grid"],
             "LazyVGrid → \(result), expected [Lazy, VGrid, Grid]"
@@ -58,20 +58,20 @@ struct Issue77CamelCaseSplitterTests {
 
     @Test("Single-word identifiers without internal caps return empty")
     func singleWordReturnsEmpty() {
-        #expect(Search.Index.splitCamelCaseIdentifier("Task") == ["Task"])
-        #expect(Search.Index.splitCamelCaseIdentifier("foo") == ["foo"])
+        #expect(Search.Indexer.splitCamelCaseIdentifier("Task") == ["Task"])
+        #expect(Search.Indexer.splitCamelCaseIdentifier("foo") == ["foo"])
     }
 
     @Test("All-caps acronym returns the acronym itself (no further split)")
     func allCapsAcronym() {
-        #expect(Search.Index.splitCamelCaseIdentifier("URL") == ["URL"])
-        #expect(Search.Index.splitCamelCaseIdentifier("HTTPS") == ["HTTPS"])
+        #expect(Search.Indexer.splitCamelCaseIdentifier("URL") == ["URL"])
+        #expect(Search.Indexer.splitCamelCaseIdentifier("HTTPS") == ["HTTPS"])
     }
 
     @Test("Empty / whitespace-only input returns empty")
     func emptyInput() {
-        #expect(Search.Index.splitCamelCaseIdentifier("") == [])
-        #expect(Search.Index.splitCamelCaseIdentifier("   ") == [])
+        #expect(Search.Indexer.splitCamelCaseIdentifier("") == [])
+        #expect(Search.Indexer.splitCamelCaseIdentifier("   ") == [])
     }
 
     // MARK: - B. defensive limits
@@ -82,7 +82,7 @@ struct Issue77CamelCaseSplitterTests {
         // `{UI, View}`. With min length 3, `UI` is dropped, leaving
         // `{View}` plus the canonical `UIView` (which the original
         // identifier column carries — splitter only emits splits).
-        let result = Search.Index.splitCamelCaseIdentifier("UIView")
+        let result = Search.Indexer.splitCamelCaseIdentifier("UIView")
         #expect(!result.contains("UI"), "UI (length 2) must be filtered: \(result)")
         #expect(result.contains("View"), "View should survive: \(result)")
     }
@@ -94,7 +94,7 @@ struct Issue77CamelCaseSplitterTests {
         // single-identifier walker can't naturally emit duplicates
         // (consecutive caps stay as one acronym unit), so this
         // exercises the cross-identifier dedupe via the bulk variant.
-        let result = Search.Index.splitCamelCaseIdentifiers([
+        let result = Search.Indexer.splitCamelCaseIdentifiers([
             "URLSession",
             "URLRequest",
             "URLComponents",
@@ -105,13 +105,13 @@ struct Issue77CamelCaseSplitterTests {
 
     @Test("No stopword list: View / Manager / Controller / Delegate survive")
     func legitimateQueryTermsNotStopworded() {
-        let result1 = Search.Index.splitCamelCaseIdentifier("NavigationView")
+        let result1 = Search.Indexer.splitCamelCaseIdentifier("NavigationView")
         #expect(result1.contains("View"))
-        let result2 = Search.Index.splitCamelCaseIdentifier("LocationManager")
+        let result2 = Search.Indexer.splitCamelCaseIdentifier("LocationManager")
         #expect(result2.contains("Manager"))
-        let result3 = Search.Index.splitCamelCaseIdentifier("ViewController")
+        let result3 = Search.Indexer.splitCamelCaseIdentifier("ViewController")
         #expect(result3.contains("View") && result3.contains("Controller"))
-        let result4 = Search.Index.splitCamelCaseIdentifier("URLSessionDelegate")
+        let result4 = Search.Indexer.splitCamelCaseIdentifier("URLSessionDelegate")
         #expect(result4.contains("Delegate"))
     }
 
@@ -119,7 +119,7 @@ struct Issue77CamelCaseSplitterTests {
 
     @Test("Bulk variant unions splits across multiple identifiers")
     func bulkVariantUnions() {
-        let result = Search.Index.splitCamelCaseIdentifiers([
+        let result = Search.Indexer.splitCamelCaseIdentifiers([
             "URLSession",
             "URLSessionDelegate",
             "URLSessionTask",

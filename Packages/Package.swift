@@ -339,8 +339,7 @@ let targets: [Target] = {
     let coreJSONParserTarget = Target.target(
         name: "CoreJSONParser",
         dependencies: ["CoreProtocols", "SharedConstants"],
-        path: "Sources/Core/JSONParser",
-        exclude: ["WebKit"]
+        path: "Sources/Core/JSONParser"
     )
 
     // #904: CoreJSONParserWebKit sibling carries the WKWebView-backed
@@ -385,8 +384,7 @@ let targets: [Target] = {
     let corePackageIndexingTarget = Target.target(
         name: "CorePackageIndexing",
         dependencies: ["CorePackageIndexingModels", "CoreProtocols", "SharedConstants", "LoggingModels", "ASTIndexer", "Resources", "SearchModels"],
-        path: "Sources/Core/PackageIndexing",
-        exclude: ["Model"]
+        path: "Sources/Core/PackageIndexing"
     )
     let corePackageIndexingTestsTarget = Target.testTarget(
         name: "CorePackageIndexingTests",
@@ -449,7 +447,7 @@ let targets: [Target] = {
         // at the family folder + excluding the subfolders that have
         // their own targets keeps everything compiling.
         path: "Sources/Core",
-        exclude: ["Protocols", "JSONParser", "PackageIndexing", "SampleCode"]
+        exclude: ["JSONParser", "PackageIndexing"]
     )
     let coreTestsTarget = Target.testTarget(
         name: "CoreTests",
@@ -1027,7 +1025,8 @@ let targets: [Target] = {
 
     let servicesTarget = Target.target(
         name: "Services",
-        dependencies: ["ServicesModels", "SearchModels", "SampleIndexModels", "SharedConstants"]
+        dependencies: ["ServicesModels", "SearchModels", "SampleIndexModels", "SharedConstants"],
+        exclude: ["README.md"]
     )
     let servicesTestsTarget = Target.testTarget(
         name: "ServicesTests",

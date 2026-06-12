@@ -312,7 +312,7 @@ extension Search.Indexer {
         // would have missed. BM25F weight on `symbol_components` (1.5) is
         // deliberately well below `symbols` (5.0): the original-identifier
         // signal stays dominant for exact-symbol queries.
-        let components = Self.splitCamelCaseIdentifiers(names)
+        let components = Search.Indexer.splitCamelCaseIdentifiers(names)
         let ftsSql = "UPDATE docs_fts SET symbols = ?, symbol_components = ? WHERE uri = ?;"
         var ftsStmt: OpaquePointer?
         defer { sqlite3_finalize(ftsStmt) }
