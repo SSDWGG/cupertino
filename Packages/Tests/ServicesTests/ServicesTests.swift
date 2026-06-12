@@ -50,7 +50,7 @@ struct ServicesTests {
 
     @Test("Services.SearchQuery clamps limit to max")
     func searchQueryClampsLimit() {
-        let query = Services.SearchQuery(text: "View", limit: 1000)
+        let query = Services.SearchQuery(text: "View", limit: Shared.Constants.Limit.maxSearchLimit + 1)
 
         #expect(query.limit == Shared.Constants.Limit.maxSearchLimit)
     }

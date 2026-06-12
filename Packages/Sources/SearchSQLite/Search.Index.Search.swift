@@ -216,7 +216,7 @@ extension Search.Index {
         // multipliers can pull such pages to #1, but only if they're in
         // the candidate set. Floor at 1000 so smart-query fan-out (which
         // passes limit=10) still over-fetches enough to include them.
-        let fetchLimit = min(max(limit * 20, 1000), 2000)
+        let fetchLimit = min(max(limit * 20, 1000), max(2000, limit))
         sql += " ORDER BY rank LIMIT ?;"
 
         var statement: OpaquePointer?

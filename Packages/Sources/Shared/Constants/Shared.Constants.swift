@@ -1370,7 +1370,7 @@ extension Shared.Constants {
         public static let defaultDocumentListLimit = CupertinoDataKit.Limits.defaultDocumentListLimit
 
         /// Maximum search result limit
-        public static let maxSearchLimit = CupertinoDataKit.Limits.maxSearchLimit
+        public static let maxSearchLimit = 100000
 
         /// Maximum document browser page size
         public static let maxDocumentListLimit = CupertinoDataKit.Limits.maxDocumentListLimit

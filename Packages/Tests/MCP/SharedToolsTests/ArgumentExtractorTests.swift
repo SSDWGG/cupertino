@@ -93,7 +93,7 @@ struct ArgumentExtractorTests {
     @Test("limit clamps to maxSearchLimit when requested exceeds max")
     func limitClampsToMax() {
         let args: [String: MCP.Core.Protocols.AnyCodable] = [
-            Shared.Constants.Search.schemaParamLimit: MCP.Core.Protocols.AnyCodable(9999),
+            Shared.Constants.Search.schemaParamLimit: MCP.Core.Protocols.AnyCodable(Shared.Constants.Limit.maxSearchLimit + 1),
         ]
         let extractor = MCP.SharedTools.ArgumentExtractor(args)
         #expect(extractor.limit() == Shared.Constants.Limit.maxSearchLimit)

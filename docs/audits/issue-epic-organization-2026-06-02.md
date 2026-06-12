@@ -48,6 +48,7 @@ Closed during the prior session as complete/superseded: **#943** (query batterie
 | **#1222** | Linux port (runtime then indexing) | (parallel) |
 | **#1223** | Declarative pluggability (Source Independence Day cont.) | (parallel) |
 | **#1228** | Semantic & vector search | vector |
+| **#1229** | Desktop Client integration & dynamic listing support | desktop |
 
 Closed as categories: **#1220** (bug sweep; bugs use the `bug` label), **#1224** (CLI), **#1225** (diagnostics), **#1226** (docs), **#1227** (distribution: two standalone issues). None warranted an epic.
 
@@ -68,6 +69,7 @@ Closed as categories: **#1220** (bug sweep; bugs use the `bug` label), **#1224**
 - **Docs area** (was #1226, closed): #449 (DocC catalog), #1048 (code-comment + DocC), #1054 (HOW-TO-ADD-A-SOURCE rewrite), #1175 (recommend Homebrew)
 - **distribution (standalone, was #1227, closed)**: #43 (Homebrew Core), #80 (MCP registries)
 - **#1228 Semantic & vector search**: #8 (sqlite-vec), #195 (AI semantic tags), #196 (GoFundMe for tags pass)
+- **#1229 Desktop** (epic): #1230 (list_sources MCP tool), #1231 (list_source_hierarchy MCP tool)
 - **Standalone (no epic)**: #183 (the roadmap itself), #197 (roadmap maintenance protocol)
 
 ## Relevance verdicts (per issue)
@@ -169,6 +171,8 @@ Closed as categories: **#1220** (bug sweep; bugs use the `bug` label), **#1224**
 | 1209 | KEEP | diagnostics | doctor per-source uniform |
 | 1210 | KEEP | 268 | document children tree |
 | 1212 | KEEP | 268 | initialize.instructions |
+| 1230 | KEEP | #1229 | list_sources MCP tool |
+| 1231 | KEEP | #1229 | list_source_hierarchy MCP tool |
 
 Closed during this audit: **#1184** (fixed in PR #1183), **#1071** (resolved by v1.3.0), **#748** (dual-consumer README shipped), and during the first-principles cleanup pass: **#197** (protocol documented + body stale), **#817** (harnesses relocated), **#1075** (premature placeholder). Plus the 5 category-epics demoted to labels (see Revision).
 
@@ -202,7 +206,7 @@ Net actions that stand:
 - Removed the `epic` label from #742 (the keystone *under* #268, not a peer epic).
 - **Decision surfaces:** #183 phases + `bug` / `priority: high` / `epic`. No topical axis.
 
-**Surviving epics (11)**, reserved for coordinated multi-step work: #189 (TUI, dormant), #190 (source expansion), #191 (search quality), #266 (availability v2), #268 (MCP capability), #769 (layer separation), #1036 (per-source DB split), #1221 (recrawl), #1222 (Linux), #1223 (declarative pluggability), #1228 (semantic + vector).
+**Surviving epics (12)**, reserved for coordinated multi-step work: #189 (TUI, dormant), #190 (source expansion), #191 (search quality), #266 (availability v2), #268 (MCP capability), #769 (layer separation), #1036 (per-source DB split), #1221 (recrawl), #1222 (Linux), #1223 (declarative pluggability), #1228 (semantic + vector), #1229 (desktop).
 
 ### Verification policy
 
